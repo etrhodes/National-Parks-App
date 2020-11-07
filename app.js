@@ -29,7 +29,7 @@ function getNationalParks(state, limit=10) {
 }
 
 function onSubmit() {
-    $('form').on('submit', event => {
+    $('#submit').on('click', event => {
         event.preventDefault();
         let state = $('.state-name').val();
         let limit = $('.number').val();
@@ -41,15 +41,18 @@ function displayResults(responseJson) {
     console.log(responseJson);
     $('#target').empty();
     let i = 0;
-    for (let i = 0; i < responseJson.length; i++) 
+    for (let i = 0; i < responseJson.data.length; i++) {
     $('#target').append(`
     <li>
         <p>${responseJson.data[i].fullName}</p>
+        <p>${responseJson.data[i].addresses[0].line1}</p>
+        <p>${responseJson.data[i].addresses[0].city} ${responseJson.data[i].addresses[0].stateCode} ${responseJson.data[i].addresses[0].postalCode}</p>
         <p>${responseJson.data[i].description}</p>
+        <p><a href="${responseJson.data[i].url}">Link to Park</a></p>
     </li>
-    `);
+    `)};    
     $('#results').removeClass('hidden');
-}
+};
 
 function handler() {
     onSubmit();
