@@ -41,13 +41,13 @@ function displayResults(responseJson) {
     console.log(responseJson);
     $('#target').empty();
     let i = 0;
-    for (let i = 0; i < responseJson.length; i++)
+    for (let i = 0; i < responseJson.length; i++) {
     $('#target').append(`
     <li>
         <p>${responseJson.data[i].fullName}</p>
         <p>${responseJson.data[i].description}</p>
     </li>
-    `)
+    `)};
     $('#results').removeClass('hidden');
 }
 
