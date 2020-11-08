@@ -46,7 +46,7 @@ function displayResults(responseJson) {
     <li>
         <p>${responseJson.data[i].fullName}</p>
         <p>${responseJson.data[i].addresses[0].line1}</p>
-        <p>${responseJson.data[i].addresses[0].city} ${responseJson.data[i].addresses[0].stateCode} ${responseJson.data[i].addresses[0].postalCode}</p>
+        <p>${responseJson.data[i].addresses[0].city}, ${responseJson.data[i].addresses[0].stateCode}, ${responseJson.data[i].addresses[0].postalCode}</p>
         <p>${responseJson.data[i].description}</p>
         <p><a href="${responseJson.data[i].url}">Link to Park</a></p>
     </li>
