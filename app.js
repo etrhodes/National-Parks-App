@@ -32,6 +32,7 @@ function onSubmit() {
     $('#submit').on('click', event => {
         event.preventDefault();
         let state = $('.state-name').val();
+        state.split(" ").join("");
         let limit = $('.number').val();
         getNationalParks(state, limit);
     })
