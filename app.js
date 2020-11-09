@@ -25,6 +25,8 @@ function getNationalParks(state, limit=10) {
         })
         .then(responseJson => 
             displayResults(responseJson)
+        )
+        .catch (error => alert('Sorry, please try again') 
         );
 }
 
