@@ -1,3 +1,5 @@
+"use strict";
+
 const apiKey = 'XJ5A8I8b0ezCdeJuK9ajOJxQh1rN8eXuxjAgusCr';
 var searchURL = `https://developer.nps.gov/api/v1/parks?`;
 
@@ -31,8 +33,9 @@ function getNationalParks(state, limit=10) {
 }
 
 function onSubmit() {
-    $('#submit').on('click', event => {
+    $('#form').on('submit', event => {
         event.preventDefault();
+        $('#target').empty();
         let state = $('.state-name').val();
         state.split(" ").join("");
         let limit = $('.number').val();
@@ -45,7 +48,15 @@ function displayResults(responseJson) {
     $('#target').empty();
     let i = 0;
     for (let i = 0; i < responseJson.data.length; i++) {
+        if(responseJson.data[i].addresses.length === 0) {
     $('#target').append(`
+    <li>
+        <p>${responseJson.data[i].fullName}</p>
+        <p>${responseJson.data[i].description}</p>
+        <p><a href="${responseJson.data[i].url}">${responseJson.data[i].url}</a></p>
+    </li>
+    `)} else {
+        $('#target').append(`
     <li>
         <p>${responseJson.data[i].fullName}</p>
         <p>${responseJson.data[i].addresses[0].line1}</p>
@@ -53,8 +64,9 @@ function displayResults(responseJson) {
         <p>${responseJson.data[i].description}</p>
         <p><a href="${responseJson.data[i].url}">${responseJson.data[i].url}</a></p>
     </li>
-    `)};    
+    `)};
     $('#results').removeClass('hidden');
+    }
 };
 
 function handler() {

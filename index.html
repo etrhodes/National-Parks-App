@@ -10,14 +10,16 @@
     <h2>Where are you staying?</h2>
     <section>
         <div>
+            <form id="form">
             <h3>Input 2 letter states, separated by a comma</h3>
             <input class="state-name" type="text" name="input[]" placeholder="State">
             <br>
             <h3>Number of Results (Max 50)</h3>
-            <input class="number" type="number" name="max-results" min= "1" max="50" placeholder="10">
+            <input class="number" type="number" name="max-results" min= "1" max="50" value="10" placeholder="10">
             <br>
             <br>
             <input id="submit" type="submit" value="submit">
+            </form>
         </div>
     </section>
     <section id="results" class="hidden">
