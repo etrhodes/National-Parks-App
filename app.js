@@ -18,8 +18,9 @@ function getNationalParks(state, limit=10) {
         limit,
     }
     let queryString = formatQueryParams(params);
-    searchURL += queryString;
-    fetch(searchURL) 
+    let url = searchURL + queryString;
+    console.log(url);
+    fetch(url) 
         .then(response => {
             if(response.ok) {
                 return response.json();
